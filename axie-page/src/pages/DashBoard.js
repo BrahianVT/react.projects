@@ -8,5 +8,5 @@ function DashBoard(props) {
     );
   }
   
-  export default Routes;
+  export default DashBoard;
   
