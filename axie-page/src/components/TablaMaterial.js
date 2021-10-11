@@ -5,7 +5,7 @@ import {withStyles} from '@material-ui/core/styles';
 const StyleTableCell = withStyles(()=>({
     root:{
         color: 'white',
-        backGrouund: 'black',
+        background: 'black',
         textAlign: 'center'
     },
     body:{

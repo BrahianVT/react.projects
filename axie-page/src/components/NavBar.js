@@ -2,7 +2,6 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import logo from "../assets/img/branding.jpg";
 const useStyles= makeStyles(()=>({
     root:{
         flexGrow: 1
@@ -32,7 +31,7 @@ function NavBar() {
                     </Typography>
 
                     <IconButton color="inherit">
-                            <img src={logo} width="40px" height="40px" alt="" className={classes.imagen}/>
+                            <img src={'./assets/img/branding.jpg'} width="40px" height="40px" alt="" className={classes.imagen}/>
                             </IconButton>
                 </Toolbar>
 

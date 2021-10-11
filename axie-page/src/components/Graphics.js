@@ -1,6 +1,6 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-import '../assets/css/graphics.css'
+import './graphics.css'
 function Graphics() {
     const data={
         labels:["Marzo", "Abril", "Mayo", "Junio", "Julio"],

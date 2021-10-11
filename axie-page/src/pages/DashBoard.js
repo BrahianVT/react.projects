@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import NavBar from "../components/NavBar";
 import 'fontsource-roboto';
-import '../assets/css/dashboard.css'
+import './dashboard.css'
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import PublicIcon from '@material-ui/icons/Public';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -95,7 +95,7 @@ function DashBoard(props) {
             </Grid>
 
             <Grid item xs={0} sm={0} md={1} lg={1} xl={1}></Grid>
-            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.container}>
+            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.containerTabla}>
                 <Graphics/>
             </Grid>
             <Grid item xs={12} className={classes.containerTabla}>
