@@ -1,9 +1,9 @@
 import React from "react";
-
+import NavBar from "../components/NavBar";
 
 function Main(){
     return (
-        <div> DashBoard here</div>
+        <NavBar/>
     );
 }
 
