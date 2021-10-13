@@ -1,9 +1,16 @@
+import { Grid } from "@mui/material";
 import React from "react";
+import Hbar from "../components/HBar";
 import NavBar from "../components/NavBar";
 
 function Main(){
     return (
-        <NavBar/>
+        <div>
+            <NavBar/>
+            <Grid item xs={12} sm={4} >
+                <Hbar />
+            </Grid>
+        </div>
     );
 }
 
