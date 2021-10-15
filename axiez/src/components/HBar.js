@@ -1,14 +1,17 @@
 import * as React from "react";
 import { List, ListItem, ListItemText, Checkbox } from '@mui/material';
 import { green, red, orange, pink, purple, grey ,blue } from '@mui/material/colors';
-import { Grid  ,Slider} from '@mui/material';
+import { Grid  ,Slider,Stack , Button } from '@mui/material';
 import MuiInput from '@mui/material/Input';
 import { useHistory, useParams } from 'react-router-dom'
 import { styled } from '@mui/material/styles';
+import { CleanHandsTwoTone } from "@mui/icons-material";
 
 const Input = styled(MuiInput)`
   width: 40px;
 `;
+
+
 function Hbar(){
     const [classes, setClasses] = React.useState(new Set())
     const [queryClasses, setQueryClasses] = React.useState("")        
@@ -18,7 +21,7 @@ function Hbar(){
     const [valueMoral, setValueMoral] = React.useState(27)
     const [valueBreed, setValueBreed] = React.useState(7)
     const [valueMystic, setValueMystic] = React.useState(0)
-    const [valuePure, setValuePure] = React.useState(1)                
+    const [valuePure, setValuePure] = React.useState(1)                   
     const history = useHistory()
     const handleSliderChange = (event, newValue) => {
           if(event.target.name === '1')setValueHp(newValue);
@@ -100,7 +103,24 @@ function Hbar(){
         setClasses(classes)  
         setQueryClasses(Array.from(classes).join(','))
      };
+
+     const cleanf = (event) => {
+             classes.clear()
+             setClasses(classes)
+             setQueryClasses("")
+             setValueHp(27)
+             setValueSpeed(27)
+             setValueSkill(27)
+             setValueMoral(27)
+             setValueBreed(7)
+             setValueMystic(0)
+             setValuePure(1)
+      }
      
+     
+      const parseQuery = (evet) => {    
+           console.log("Execute query");
+      }
      React.useEffect(() =>{
         const params = new URLSearchParams()
         if(classes.size !== 0){
@@ -108,7 +128,6 @@ function Hbar(){
         } else {
            params.delete("classes");                    
         }
-
         if(valueHp > 27){
            params.append("hp", valueHp);                    
         } else {
@@ -144,13 +163,12 @@ function Hbar(){
         } else {
           params.delete("pureness");                   
         }
-
         
         history.push({ search: params.toString()});
+
      }, [classes, history, queryClasses, valueHp, valueSpeed, valueSkill, valueMoral, valueMystic, valueBreed, valuePure])
 
-     const { params2 } = useParams()
-        console.log("Parametros " + params2)
+     
         
     return (
        <List sx={{  maxWidth: 320, bgcolor: 'background.paper' }}>
@@ -282,7 +300,16 @@ function Hbar(){
              <Input value={valuePure} size="small" onChange={handleInputChange} name="7" 
               inputProps={{ step: 1, min: 1, max: 6, type: 'number', 'aria-labelledby': 'input-slider',}} />
            </Grid>
-           </ListItem>                                                 
+           </ListItem>   
+
+           <ListItem sx={{ padding:.4}}>
+           <Grid item>
+              <Stack spacing={2} direction="row">
+                 <Button variant="contained" color="success" onClick={parseQuery}>Search</Button>
+                 <Button variant="contained" color="error" onClick={cleanf}>Clear</Button>
+              </Stack>
+           </Grid>
+           </ListItem>                                                        
        </List>                    
     );
 }
