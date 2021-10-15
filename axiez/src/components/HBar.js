@@ -5,9 +5,10 @@ import { Grid  ,Slider,Stack , Button } from '@mui/material';
 import MuiInput from '@mui/material/Input';
 import { useHistory, useParams } from 'react-router-dom'
 import { styled } from '@mui/material/styles';
-import { CleanHandsTwoTone } from "@mui/icons-material";
-
-const Input = styled(MuiInput)`
+import { GetAxiesInfo , API_URL , axieQuery } from "../Requests.js";
+import { useMutation , useQuery } from "react-query";
+import { request } from "graphql-request";
+const Input =  styled(MuiInput)`
   width: 40px;
 `;
 
@@ -21,7 +22,8 @@ function Hbar(){
     const [valueMoral, setValueMoral] = React.useState(27)
     const [valueBreed, setValueBreed] = React.useState(7)
     const [valueMystic, setValueMystic] = React.useState(0)
-    const [valuePure, setValuePure] = React.useState(1)                   
+    const [valuePure, setValuePure] = React.useState(1)     
+             
     const history = useHistory()
     const handleSliderChange = (event, newValue) => {
           if(event.target.name === '1')setValueHp(newValue);
@@ -56,48 +58,48 @@ function Hbar(){
         switch(event.target.id){
            case "plant":
               if(event.target.checked)
-              classes.add("plant")
-              else classes.delete("plant")      
+              classes.add("Plant")
+              else classes.delete("Plant")      
            break;
            case "beast":
               if(event.target.checked)
-                 classes.add("beast")
-              else classes.delete("beast")         
+                 classes.add("Beast")
+              else classes.delete("Beast")         
            break;
            case "aqua":
               if(event.target.checked)
-                    classes.add("aqua")
-              else classes.delete("aqua")         
+                    classes.add("Aquatic")
+              else classes.delete("Aquatic")         
               break;
            case "bird":
               if(event.target.checked)
-                    classes.add("bird")
-              else classes.delete("bird")      
+                    classes.add("Bird")
+              else classes.delete("Bird")      
               break;
            case "reptile":        
               if(event.target.checked)
-                    classes.add("reptile")
-              else classes.delete("reptile")         
+                    classes.add("Reptile")
+              else classes.delete("Reptile")         
                  break;
            case "dawn":   
               if(event.target.checked)
-                    classes.add("dawn")
-              else classes.delete("dawn")         
+                    classes.add("Dawn")
+              else classes.delete("Dawn")         
               break;
            case "dusk":
               if(event.target.checked)
-              classes.add("dusk")
-              else classes.delete("dusk")      
+              classes.add("Dusk")
+              else classes.delete("Dusk")      
               break;
            case "mech":
               if(event.target.checked)
-                 classes.add("mech")
-              else classes.delete("mech")         
+                 classes.add("Mech")
+              else classes.delete("Mech")         
            break;
            case "bug":
               if(event.target.checked)
-                    classes.add("bug")
-              else classes.delete("bug")         
+                    classes.add("Bug")
+              else classes.delete("Bug")         
               break;
         }
         setClasses(classes)  
@@ -117,10 +119,53 @@ function Hbar(){
              setValuePure(1)
       }
      
-     
-      const parseQuery = (evet) => {    
-           console.log("Execute query");
-      }
+      let  criteria = {
+                    breedCount: [],
+                    stages:[4],
+                    classes:[],
+                    pureness:[],
+                    numMystic: [],
+                    parts:[],
+                    hp:[],
+                    speed:[],
+                    skill: [],
+                    morale:[]
+        }
+
+      const parseQuery = useMutation(requestP  => {
+           const parameters  =  new URLSearchParams(window.location.search);    
+           if(parameters.has('classes'))
+              criteria.classes = parameters.get('classes').split(",")
+           
+           if(parameters.has('hp'))
+              criteria.hp = [Number(parameters.get('hp')),61]
+           if(parameters.has('speed'))
+              criteria.speed =  [Number(parameters.get('hp')),61]
+           if(parameters.has('skill'))
+              criteria.skill =  [Number(parameters.get('skill')),61]
+           if(parameters.has('moral'))
+              criteria.morale =  [Number(parameters.get('moral')),61]
+           if(parameters.has('breeds'))
+              criteria.breedCount =  [0, Number(parameters.get('breeds'))]
+           if(parameters.has('mystics'))
+              criteria.numMystic =  [0, Number(parameters.get('mystics'))]
+           if(parameters.has('pureness'))
+              criteria.pureness =  [Number(parameters.get('pureness'))]
+          
+           return  request(API_URL, axieQuery,requestP)
+      })
+
+      let from = 0, size = 50, sort = 'PriceAsc', auctionType = 'Sale'
+      console.log(" idle " + parseQuery.isIdle);   
+      console.log("isLoading " + parseQuery.isLoading);
+      if(!parseQuery.isLoading)console.log(parseQuery.data);
+      
+      let requestP = {from, size, sort, auctionType, criteria}
+     /* const {data, error, isLoading, isSuccess} = GetAxiesInfo({from, size, sort, auctionType, criteria})
+      if (error) console.log('Something went wrong')
+      else console.log(data);
+      if (isLoading) console.log('Loading...')*/
+
      React.useEffect(() =>{
         const params = new URLSearchParams()
         if(classes.size !== 0){
@@ -175,53 +220,53 @@ function Hbar(){
           <ListItemText primary={"Class"} />                 
          <ListItem key='tanks' disablePadding={true} >   
                 <Checkbox  sx={{ color: green[600], '&.Mui-checked': { color: green[600] },paddingRight: 0}} 
-                  id='plant' checked={classes.has("plant")} onChange={handleChange}
+                  id='plant' checked={classes.has("Plant")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
              Plant
                 <Checkbox  sx={{ color: orange[600], '&.Mui-checked': { color: orange[600] },paddingRight: 0}} 
-                  id='beast'  checked={classes.has("beast")} onChange={handleChange}
+                  id='beast'  checked={classes.has("Beast")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
               Beast
               <Checkbox  sx={{ color: blue[600], '&.Mui-checked': { color: blue[600] },paddingRight: 0}} 
-                  id='aqua' checked={classes.has("aqua")} onChange={handleChange}
+                  id='aqua' checked={classes.has("Aquatic")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
               Aqua
           </ListItem>   
           <ListItem key='mids' disablePadding={true} >   
                 <Checkbox  sx={{ color: pink[200], '&.Mui-checked': { color: pink[200] },paddingRight: 0}} 
-                  id='bird' checked={classes.has("bird")} onChange={handleChange}
+                  id='bird' checked={classes.has("Bird")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
              Bird
                 <Checkbox  sx={{ color: purple[600], '&.Mui-checked': { color: purple[600] },paddingRight: 0}} 
-                  id='reptile'  checked={classes.has("reptile")} onChange={handleChange}
+                  id='reptile'  checked={classes.has("Reptile")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
               Reptile
 
               <Checkbox  sx={{ color: blue[900], '&.Mui-checked': { color: blue[900] },paddingRight: 0}} 
-                  id='dawn' checked={classes.has("dawn")} onChange={handleChange}
+                  id='dawn' checked={classes.has("Dawn")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
               Dawn
           </ListItem>   
           <ListItem key='backs' disablePadding={true} >   
                 <Checkbox  sx={{ color: '#212121', '&.Mui-checked': { color: '#212121' },paddingRight: 0}} 
-                  id='dusk' checked={classes.has("dusk")} onChange={handleChange}
+                  id='dusk' checked={classes.has("Dusk")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
              Dusk
                 <Checkbox  sx={{ color: grey[400], '&.Mui-checked': { color: grey[400] },paddingRight: 0}} 
-                  id='mech'  checked={classes.has("mech")} onChange={handleChange}
+                  id='mech'  checked={classes.has("Mech")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
               Mech
 
               <Checkbox  sx={{ color: red[800], '&.Mui-checked': { color: red[800] },paddingRight: 0}} 
-                  id='bug' checked={classes.has("bug")} onChange={handleChange}
+                  id='bug' checked={classes.has("Bug")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
               Bug
@@ -305,7 +350,7 @@ function Hbar(){
            <ListItem sx={{ padding:.4}}>
            <Grid item>
               <Stack spacing={2} direction="row">
-                 <Button variant="contained" color="success" onClick={parseQuery}>Search</Button>
+                 <Button variant="contained" color="success" onClick= {() => parseQuery.mutate(requestP)}>Search</Button>
                  <Button variant="contained" color="error" onClick={cleanf}>Clear</Button>
               </Stack>
            </Grid>
