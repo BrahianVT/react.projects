@@ -1,41 +1,38 @@
 import React from "react";
 
-const tails = 
-[ {'carrot': 'plant'},{'cattail': 'plant'},{'hatsune': 'plant'},{'yam': 'plant'},{'potato-leaf': 'plant'},{'hot-butt': 'plant'},
-  {'koi':'aquatic'},{'nimo':'aquatic'},{'tadpole':'aquatic'},{'ranchu':'aquatic'},{'navaga':'aquatic'},{'shrimp':'aquatic'},
-  {'cottontail':'beast'},{'rice':'beast'},{'shiba':'beast'},{'hare':'beast'},{'nut-cracker':'beast'},{'gerbil':'beast'},
-  {'swallow':'bird'},{'feather-fan':'bird'},{'the-last-one':'bird'},{'cloud':'bird'},{'granmas-fan':'bird'},{'post-fight':'bird'},
-  {'ant':'bug'},{'twin-tail':'bug'},{'fish-snack':'bug'},{'gravel-ant':'bug'},{'pupae':'bug'},{'thorny-cattepilar':'bug'},
-  {'wall-gecko':'reptile'},{'iguana':'reptile'},{'tiny-dino':'reptile'},{'snake-jar':'reptile'},{'gila':'reptile'},{'grass-snake':'reptile'}  
+export const tails = 
+[ { name:'carrot' ,type:'plant'},{name:'cattail',type:'plant'},{name:'hatsune',type: 'plant'},{name:'yam',type: 'plant'},{name:'potato-leaf',type: 'plant'},{name:'hot-butt',type:'plant'},
+  {name:'koi',type:'aquatic'},{name:'nimo',type:'aquatic'},{name:'tadpole',type:'aquatic'},{name:'ranchu',type:'aquatic'},{name:'navaga',type:'aquatic'},{name:'shrimp',type:'aquatic'},
+  {name:'cottontail',type:'beast'},{name:'rice',type:'beast'},{name:'shiba',type:'beast'},{name:'hare',type:'beast'},{name:'nut-cracker',type:'beast'},{name: 'gerbil',type:'beast'},
+  {name:'swallow',type:'bird'},{name:'feather-fan',type:'bird'},{name:'the-last-one',type:'bird'},{name:'cloud',type:'bird'},{name:'granmas-fan',type:'bird'},{name:'post-fight',type:'bird'},
+  {name:'ant',type:'bug'},{name:'twin-tail',type:'bug'},{name:'fish-snack',type:'bug'},{name:'gravel-ant',type:'bug'},{name:'pupae',type:'bug'},{name:'thorny-cattepilar',type:'bug'},
+  {name:'wall-gecko',type:'reptile'},{name:'iguana',type:'reptile'},{name:'tiny-dino',type:'reptile'},{name:'snake-jar',type:'reptile'},{name:'gila',type:'reptile'},{name:'grass-snake',type:'reptile'}  
 ]
 
-const backs = 
-[ {'turnip': 'plant'},{'shiitake': 'plant'},{'bidens': 'plant'},{'watering-can': 'plant'},{'mint': 'plant'},{'pumpkin': 'plant'},
-  {'hermit':'aquatic'},{'blue-moon':'aquatic'},{'goldfish':'aquatic'},{'sponge':'aquatic'},{'anemone':'aquatic'},{'perch':'aquatic'},
-  {'ronin':'beast'},{'hero':'beast'},{'jaguar':'beast'},{'risky-beast':'beast'},{'timber':'beast'},{'furball':'beast'},
-  {'balloon':'bird'},{'cupid':'bird'},{'raven':'bird'},{'pigeon-post':'bird'},{'kingfisher':'bird'},{'tri-feather':'bird'},
-  {'snail-shell':'bug'},{'garish-worn':'bug'},{'buzz-buzz':'bug'},{'sandal':'bug'},{'scarab':'bug'},{'spiky-wing':'bug'},
-  {'bone-sail':'reptile'},{'tri-spikes':'reptile'},{'tri-spikes':'reptile'},{'green-thorns':'reptile'},{'indian-star':'reptile'},{'red-ear':'reptile'}  
+export const backs = 
+[ {name:'turnip',type: 'plant'},{name:'shiitake',type: 'plant'},{name:'bidens',type:'plant'},{name:'watering-can',type:'plant'},{name:'mint',type:'plant'},{name:'pumpkin',type:'plant'},
+  {name:'hermit',type:'aquatic'},{name:'blue-moon',type:'aquatic'},{name:'goldfish',type:'aquatic'},{name:'sponge',type:'aquatic'},{name:'anemone',type:'aquatic'},{name:'perch',type:'aquatic'},
+  {name:'ronin',type:'beast'},{name:'hero',type:'beast'},{name:'jaguar',type:'beast'},{name:'risky-beast',type:'beast'},{name:'timber',type:'beast'},{name:'furball',type:'beast'},
+  {name:'balloon',type:'bird'},{name:'cupid',type:'bird'},{name:'raven',type:'bird'},{name:'pigeon-post',type:'bird'},{name:'kingfisher',type:'bird'},{name:'tri-feather',type:'bird'},
+  {name:'snail-shell',type:'bug'},{name:'garish-worn',type:'bug'},{name:'buzz-buzz',type:'bug'},{name:'sandal',type:'bug'},{name:'scarab',type:'bug'},{name:'spiky-wing',type:'bug'},
+  {name:'bone-sail',type:'reptile'},{name:'tri-spikes',type:'reptile'},{name:'green-thorns',type:'reptile'},{name:'indian-star',type:'reptile'},{name:'red-ear',type:'reptile'}  
 ]
 
-const mouths = 
-[ {'serious': 'plant'},{'zigzag': 'plant'},{'herbivore': 'plant'},{'silence-whisper': 'plant'},
-  {'lam':'aquatic'},{'catfish':'aquatic'},{'risky-fish':'aquatic'},{'piranha':'aquatic'},
-  {'nut-cracker':'beast'},{'goda':'beast'},{'axie-kiss':'beast'},{'confident':'beast'},
-  {'doubletalk':'bird'},{'peace-maker':'bird'},{'hungry-bird':'bird'},{'little-owl':'bird'},
-  {'mosquito':'bug'},{'pincer':'bug'},{'cute-bunny':'bug'},{'square-teeth':'bug'},
-  {'toothless-bite':'reptile'},{'kotaro':'reptile'},{'razor-bite':'reptile'},{'tiny-turtle':'reptile'}  
+export const mouths = 
+[ {name:'serious',type:'plant'},{name:'zigzag',type:'plant'},{name:'herbivore',type:'plant'},{name:'silence-whisper',type:'plant'},
+  {name:'lam',type:'aquatic'},{name:'catfish',type:'aquatic'},{name:'risky-fish',type:'aquatic'},{name:'piranha',type:'aquatic'},
+  {name:'nut-cracker',type:'beast'},{name:'goda',type:'beast'},{name:'axie-kiss',type:'beast'},{name:'confident',type:'beast'},
+  {name:'doubletalk',type:'bird'},{name:'peace-maker',type:'bird'},{name:'hungry-bird',type:'bird'},{name:'little-owl',type:'bird'},
+  {name:'mosquito',type:'bug'},{name:'pincer',type:'bug'},{name:'cute-bunny',type:'bug'},{name:'square-teeth',type:'bug'},
+  {name:'toothless-bite',type:'reptile'},{name:'kotaro',type:'reptile'},{name:'razor-bite',type:'reptile'},{name:'tiny-turtle',type:'reptile'}  
 ]
 
-const horns = 
-[ {'bambo-shoot': 'plant'},{'beech': 'plant'},{'rose-bud': 'plant'},{'strawberry-shortcake': 'plant'},{'cactus': 'plant'},
-  {'babylonia':'aquatic'},{'teal-shell':'aquatic'},{'clamshell':'aquatic'},{'anemone':'aquatic'},{'oranda':'aquatic'},
-  {'little-branch':'beast'},{'imp':'beast'},{'merry':'beast'},{'pocky':'beast'},{'dual-blade':'beast'},{'arco':'beast'},
-  {'eggshell':'bird'},{'cuckoo':'bird'},{'trump':'bird'},{'kestrel':'bird'},{'wing-horn':'bird'},{'feather-spear':'bird'},
-  {'laggin':'bug'},{'antenna':'bug'},{'caterpillars':'bug'},{'pliers':'bug'},{'parasite':'bug'},
-  {'unko':'reptile'},{'scaly-spear':'reptile'},{'cerastes':'reptile'},{'scaly-spoon':'reptile'},{'bumpy':'reptile'}  
+export const horns = 
+[ {name:'bambo-shoot',type:'plant'},{name:'beech',type:'plant'},{name:'rose-bud',type:'plant'},{name:'strawberry-shortcake',type:'plant'},{name:'cactus',type:'plant'},
+  {name:'babylonia',type:'aquatic'},{name:'teal-shell',type:'aquatic'},{name:'clamshell',type:'aquatic'},{name:'anemone',type:'aquatic'},{name:'oranda',type:'aquatic'},
+  {name:'little-branch',type:'beast'},{name:'imp',type:'beast'},{name:'merry',type:'beast'},{name:'pocky',type:'beast'},{name:'dual-blade',type:'beast'},{name:'arco',type:'beast'},
+  {name:'eggshell',type:'bird'},{'cuckoo':'bird'},{'trump':'bird'},{'kestrel':'bird'},{'wing-horn':'bird'},{'feather-spear':'bird'},
+  {name:'laggin',type:'bug'},{name:'antenna',type:'bug'},{name:'caterpillars',type:'bug'},{name:'pliers',type:'bug'},{name:'parasite',type:'bug'},
+  {name:'unko',type:'reptile'},{name:'scaly-spear',type:'reptile'},{name:'cerastes',type:'reptile'},{name:'scaly-spoon',type:'reptile'},{name:'bumpy',type:'reptile'}  
 ]
-export default tails;
-export default backs;
-export default mouths;
-export default horns;
+ 

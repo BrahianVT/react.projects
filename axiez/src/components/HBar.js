@@ -6,6 +6,7 @@ import MuiInput from '@mui/material/Input';
 import { useHistory } from 'react-router-dom'
 import { styled } from '@mui/material/styles';
 import MyContext from "../MyContext.js"; 
+import SelectSkills from "./SelectSkills.js";
 const Input =  styled(MuiInput)`
   width: 40px;
 `;
@@ -340,7 +341,13 @@ function Hbar(){
               inputProps={{ step: 1, min: 1, max: 6, type: 'number', 'aria-labelledby': 'input-slider',}} />
            </Grid>
            </ListItem>   
-
+           
+           <ListItemText primary={"Skills"} />
+           <ListItem  sx={{ padding:.4}}>
+           <Grid item >
+              <SelectSkills />
+           </Grid>
+           </ListItem>     
            <ListItem sx={{ padding:.4}}>
            <Grid item>
               <Stack spacing={2} direction="row">

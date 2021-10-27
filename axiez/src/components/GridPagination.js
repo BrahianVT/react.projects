@@ -90,7 +90,7 @@ const useStyles = makeStyles({
 function loadServerRows(page, data){
     return new Promise((resolve) => {
         
-    (async () => {  console.log(" l: " + data.length + " page :" + page); 
+    (async () => {  //console.log(" l: " + data.length + " page :" + page); 
 
         setTimeout( () => {
             resolve(data.slice(page * 50), (page + 1) * 50);
