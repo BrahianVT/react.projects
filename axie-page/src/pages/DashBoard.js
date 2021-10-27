@@ -79,6 +79,7 @@ function DashBoard(props) {
                 texto="0" color="rgba(248,80,50,1)" font="white"/>
             </Grid>
 
+            {/* Same row */}
             <Grid container spacing={1} className={classes.container}  xs={12} sm={12} md={6} lg={6} xl={6}>
                 <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
                     <Cards titulo="SUBSCRISTORES" texto="962" />
@@ -95,9 +96,11 @@ function DashBoard(props) {
             </Grid>
 
             <Grid item xs={0} sm={0} md={1} lg={1} xl={1}></Grid>
-            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.containerTabla}>
+            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.containerGrafica}>
                 <Graphics/>
             </Grid>
+            {/* Same row */}
+
             <Grid item xs={12} className={classes.containerTabla}>
                 <TablaMaterial data={data}/>
             </Grid>

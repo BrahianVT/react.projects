@@ -1,9 +1,7 @@
 import React,{ useState } from 'react';
 import { GetAxieInfo } from "./useRequest";
 import Post from "./components/Post";
-import logo from './logo.svg';
 import './App.css';
-import { GraphQLID} from 'graphql';
 function App() {
   const [axieId, setAxieID] = useState("940499");
   const { data, error, isLoading, isSuccess } = GetAxieInfo({axieId});
