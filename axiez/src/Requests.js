@@ -1,14 +1,21 @@
-import { useQuery } from "react-query";
-import { gql, request } from "graphql-request";
+import { useQuery, useMutation, UseMutationResult} from "react-query";
+import { gql, request} from "graphql-request";
 
-export const API_URL = "https://graphql-gateway.axieinfinity.com/graphql";
+export const API_URL = "https://axieinfinity.com/graphql-server-v2/graphql";
 
-export function GetAxiesInfo(info){      
-  console.log("LLega aqui");      
+export function GetAxiesInfo(info){           
    return useQuery(['getAxi-Info',info], async() => {
       const data = await request(API_URL, axieQuery,info)
       return data;       
      });
+}
+
+export function GetAxiesInfo2(requestP){
+    return useMutation(['getInfo-Axi', requestP], async() => {
+      const data = await request(API_URL, axieQuery,requestP)
+      return data
+    }).mutate(requestP);  
+
 }
 
 
