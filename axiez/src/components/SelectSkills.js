@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { backs } from '../Parts.js';
+import { green, red, orange, pink, purple, grey ,blue } from '@mui/material/colors';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -71,12 +72,44 @@ function SelectSkills() {
             onChange={handleChange}
             input={<OutlinedInput label="Backs" />}
             MenuProps={MenuProps}>
-            {backs.map((value) => (
-               
-              <MenuItem key={value.name} value={value.name} style={getStyles(value.name, personName, theme)}>
-                {value.name}
-              </MenuItem>
-            ))}
+           
+            { backs.map((value) => {               
+              
+                   switch(value.type){
+                    case "plant":
+                         return <MenuItem key={value.name} value={value.name} sx={{ color: green[600]}} style={getStyles(value.name, personName, theme)}>
+                            {value.name}
+                            </MenuItem>;
+                    break;
+                    case "beast":
+                        return <MenuItem key={value.name} value={value.name} sx={{ color: orange[400]}} style={getStyles(value.name, personName, theme)}>
+                            {value.name}
+                            </MenuItem>;
+                    break;
+                    case "aquatic":
+                        return <MenuItem key={value.name} value={value.name} sx={{ color: blue[500]}} style={getStyles(value.name, personName, theme)}>
+                            {value.name}
+                            </MenuItem>;
+                    break;
+                    case "bird":
+                         return <MenuItem key={value.name} value={value.name} sx={{ color: pink[300]}} style={getStyles(value.name, personName, theme)}>
+                        {value.name}
+                        </MenuItem>;
+                    break;
+                    case "reptile":        
+                        return <MenuItem key={value.name} value={value.name} sx={{ color: purple[400]}} style={getStyles(value.name, personName, theme)}>
+                        {value.name}
+                        </MenuItem>;
+                    break;
+                    case "bug":
+                        return <MenuItem key={value.name} value={value.name} sx={{ color: red[700]}} style={getStyles(value.name, personName, theme)}>
+                        {value.name}
+                        </MenuItem>;
+                    break;
+                   }
+
+
+            }) }
           </Select>
         </FormControl>
       </div>
