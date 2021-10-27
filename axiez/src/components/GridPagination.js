@@ -2,8 +2,7 @@ import * as React from 'react';
 import { DataGrid, GridToolbar} from '@mui/x-data-grid';
 import { green, red, orange, pink, purple, grey ,blue } from '@mui/material/colors';
 import MyContext from "../MyContext.js";
-import { API_URL , axieQuery, GetAxiesInfo2,GetAxiesInfo } from "../Requests.js";
-import { useMutation } from "react-query";
+import { API_URL , axieQuery } from "../Requests.js";
 import { request } from "graphql-request";
 import { makeStyles } from '@mui/styles';
 
@@ -162,16 +161,10 @@ export default function GridPagination(){
     const{ criteria } = React.useContext(MyContext);
     const classes = useStyles();
     
-    //const {data, error, isLoading, isSuccess} = GetAxiesInfo(requestP)
-      //console.log(isSuccess)
-      // console.log(isLoading)
-    
     const[ page, setPage] = React.useState(0);
     const[ rows, setRows] = React.useState([]);
     const[ loading, setLoading] = React.useState(false);
-   // if(isSuccess) parsing(data.axies)
-    
-   
+
  
     React.useEffect( () => {
         setPage(0);
