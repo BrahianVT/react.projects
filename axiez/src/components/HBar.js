@@ -3,11 +3,9 @@ import { List, ListItem, ListItemText, Checkbox } from '@mui/material';
 import { green, red, orange, pink, purple, grey ,blue } from '@mui/material/colors';
 import { Grid  ,Slider,Stack , Button } from '@mui/material';
 import MuiInput from '@mui/material/Input';
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { styled } from '@mui/material/styles';
-import { GetAxiesInfo , API_URL , axieQuery } from "../Requests.js";
-import { useMutation , useQuery } from "react-query";
-import { request } from "graphql-request";
+import MyContext from "../MyContext.js"; 
 const Input =  styled(MuiInput)`
   width: 40px;
 `;
@@ -23,7 +21,9 @@ function Hbar(){
     const [valueBreed, setValueBreed] = React.useState(7)
     const [valueMystic, setValueMystic] = React.useState(0)
     const [valuePure, setValuePure] = React.useState(1)     
-             
+    
+    const {  addData} = React.useContext(MyContext)
+
     const history = useHistory()
     const handleSliderChange = (event, newValue) => {
           if(event.target.name === '1')setValueHp(newValue);
@@ -51,8 +51,8 @@ function Hbar(){
           setValueSkill(valueSkill < 21 ?21: valueSkill > 61?61:valueSkill);
           setValueMoral(valueMoral < 21 ?21: valueMoral > 61?61:valueMoral);
           setValueBreed(valueBreed < 0 ?0: valueBreed > 7?7:valueBreed);
-          setValueMystic(valueBreed < 0 ?0: valueBreed > 7?7:valueBreed);
-          setValueBreed(valueBreed < 0 ?0: valueBreed > 7?7:valueBreed);
+          setValueMystic(valueMystic < 0 ?0: valueMystic > 7?7:valueMystic);
+          setValuePure(valuePure < 0 ?0: valuePure > 7?7:valuePure);
      };
     const handleChange = (event) => { 
         switch(event.target.id){
@@ -119,7 +119,7 @@ function Hbar(){
              setValuePure(1)
       }
      
-      let  criteria = {
+      let  criteria2 = {
                     breedCount: [],
                     stages:[4],
                     classes:[],
@@ -132,36 +132,30 @@ function Hbar(){
                     morale:[]
         }
 
-      const parseQuery = useMutation(requestP  => {
+      const parseQuery = ()  => { 
            const parameters  =  new URLSearchParams(window.location.search);    
            if(parameters.has('classes'))
-              criteria.classes = parameters.get('classes').split(",")
+              criteria2.classes = parameters.get('classes').split(",")
            
            if(parameters.has('hp'))
-              criteria.hp = [Number(parameters.get('hp')),61]
+              criteria2.hp = [Number(parameters.get('hp')),61]
            if(parameters.has('speed'))
-              criteria.speed =  [Number(parameters.get('hp')),61]
+              criteria2.speed =  [Number(parameters.get('speed')),61]
            if(parameters.has('skill'))
-              criteria.skill =  [Number(parameters.get('skill')),61]
+              criteria2.skill =  [Number(parameters.get('skill')),61]
            if(parameters.has('moral'))
-              criteria.morale =  [Number(parameters.get('moral')),61]
+              criteria2.morale =  [Number(parameters.get('moral')),61]
            if(parameters.has('breeds'))
-              criteria.breedCount =  [0, Number(parameters.get('breeds'))]
+              criteria2.breedCount =  [0, Number(parameters.get('breeds'))]
            if(parameters.has('mystics'))
-              criteria.numMystic =  [0, Number(parameters.get('mystics'))]
+              criteria2.numMystic = [0, Number(parameters.get('mystics'))]
            if(parameters.has('pureness'))
-              criteria.pureness =  [Number(parameters.get('pureness'))]
-          
-           return  request(API_URL, axieQuery,requestP)
-      })
-
-      let from = 0, size = 50, sort = 'PriceAsc', auctionType = 'Sale'
-      console.log(" idle " + parseQuery.isIdle);   
-      console.log("isLoading " + parseQuery.isLoading);
-      if(!parseQuery.isLoading)console.log(parseQuery.data);
+              criteria2.pureness =  [Number(parameters.get('pureness'))]
       
-      let requestP = {from, size, sort, auctionType, criteria}
-     /* const {data, error, isLoading, isSuccess} = GetAxiesInfo({from, size, sort, auctionType, criteria})
+         addData(criteria2)
+      }
+
+     /* const {data, error, isLoading, isSuccess} = GetAxiesInfo({from, size, sort, auctionType, criteria2})
       if (error) console.log('Something went wrong')
       else console.log(data);
       if (isLoading) console.log('Loading...')*/
@@ -216,7 +210,7 @@ function Hbar(){
      
         
     return (
-       <List sx={{  maxWidth: 320, bgcolor: 'background.paper' }}>
+       <List sx={{ paddingLeft:1, maxWidth: 320, bgcolor: 'background.paper' }}>
           <ListItemText primary={"Class"} />                 
          <ListItem key='tanks' disablePadding={true} >   
                 <Checkbox  sx={{ color: green[600], '&.Mui-checked': { color: green[600] },paddingRight: 0}} 
@@ -350,7 +344,7 @@ function Hbar(){
            <ListItem sx={{ padding:.4}}>
            <Grid item>
               <Stack spacing={2} direction="row">
-                 <Button variant="contained" color="success" onClick= {() => parseQuery.mutate(requestP)}>Search</Button>
+                 <Button variant="contained" color="success" onClick= {parseQuery}>Search</Button>
                  <Button variant="contained" color="error" onClick={cleanf}>Clear</Button>
               </Stack>
            </Grid>
