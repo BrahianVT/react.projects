@@ -4,9 +4,9 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { backs } from '../Parts.js';
-import { green, red, orange, pink, purple, grey ,blue } from '@mui/material/colors';
+import Select from '@mui/material/Select'; 
+import { backs,tails,horns, mouths} from '../Parts.js';
+import { green, red, orange, pink, purple ,blue } from '@mui/material/colors';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -18,18 +18,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-  ];
 
   function getStyles(name, personName, theme) {
     return {
@@ -40,14 +28,40 @@ const names = [
     };
   }
 
+  function getMenusItems(array, personName,theme){
+    return array.map((value) => {                    
+        switch(value.type){
+         case "plant":
+              return <MenuItem key={value.name} value={value.name} sx={{ color: green[600]}} style={getStyles(value.name, personName, theme)}>
+                 {value.name}
+                 </MenuItem>;   
+         case "beast":
+             return <MenuItem key={value.name} value={value.name} sx={{ color: orange[400]}} style={getStyles(value.name, personName, theme)}>
+                 {value.name}
+                 </MenuItem>;
+         case "aquatic":
+             return <MenuItem key={value.name} value={value.name} sx={{ color: blue[500]}} style={getStyles(value.name, personName, theme)}>
+                 {value.name}
+                 </MenuItem>;
+         case "bird":
+              return <MenuItem key={value.name} value={value.name} sx={{ color: pink[300]}} style={getStyles(value.name, personName, theme)}>
+             {value.name}
+             </MenuItem>;
+         case "reptile":        
+             return <MenuItem key={value.name} value={value.name} sx={{ color: purple[400]}} style={getStyles(value.name, personName, theme)}>
+             {value.name}
+             </MenuItem>;
+         case "bug":
+             return <MenuItem key={value.name} value={value.name} sx={{ color: red[700]}} style={getStyles(value.name, personName, theme)}>
+             {value.name}
+             </MenuItem>;
+        }
+    });
+  }
+
 function SelectSkills() {
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
-    
-    /*backs.forEach((value, key) => {
-        console.log(value.name)
-    })*/
-
     
     
     const handleChange = (event) => {
@@ -61,58 +75,39 @@ function SelectSkills() {
     };
   
     return (
-      <div>
-        <FormControl  sx={{width: 200 }}>
-          <InputLabel id="demo-multiple-name-label">Backs</InputLabel>
-          <Select
-            labelId="demo-multiple-name-label"
-            id="demo-multiple-name"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<OutlinedInput label="Backs" />}
-            MenuProps={MenuProps}>
-           
-            { backs.map((value) => {               
-              
-                   switch(value.type){
-                    case "plant":
-                         return <MenuItem key={value.name} value={value.name} sx={{ color: green[600]}} style={getStyles(value.name, personName, theme)}>
-                            {value.name}
-                            </MenuItem>;
-                    break;
-                    case "beast":
-                        return <MenuItem key={value.name} value={value.name} sx={{ color: orange[400]}} style={getStyles(value.name, personName, theme)}>
-                            {value.name}
-                            </MenuItem>;
-                    break;
-                    case "aquatic":
-                        return <MenuItem key={value.name} value={value.name} sx={{ color: blue[500]}} style={getStyles(value.name, personName, theme)}>
-                            {value.name}
-                            </MenuItem>;
-                    break;
-                    case "bird":
-                         return <MenuItem key={value.name} value={value.name} sx={{ color: pink[300]}} style={getStyles(value.name, personName, theme)}>
-                        {value.name}
-                        </MenuItem>;
-                    break;
-                    case "reptile":        
-                        return <MenuItem key={value.name} value={value.name} sx={{ color: purple[400]}} style={getStyles(value.name, personName, theme)}>
-                        {value.name}
-                        </MenuItem>;
-                    break;
-                    case "bug":
-                        return <MenuItem key={value.name} value={value.name} sx={{ color: red[700]}} style={getStyles(value.name, personName, theme)}>
-                        {value.name}
-                        </MenuItem>;
-                    break;
-                   }
-
-
-            }) }
+        <div>
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237, marginBottom:0.4}}>
+          <InputLabel id="backs">Backs</InputLabel>
+          <Select labelId="backs" id="back" multiple
+            value={personName} onChange={handleChange} input={<OutlinedInput label="Backs" />}
+            MenuProps={MenuProps}> { getMenusItems(backs, personName,theme) }
           </Select>
         </FormControl>
-      </div>
+        
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.4}}>
+          <InputLabel id="mouths">Mouths</InputLabel>
+          <Select labelId="mouths" id="mouth" multiple
+            value={personName} onChange={handleChange} input={<OutlinedInput label="Mouths" />}
+            MenuProps={MenuProps}> { getMenusItems(mouths, personName,theme) }
+          </Select>
+        </FormControl>
+
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.4}}>
+          <InputLabel id="horns">Horns</InputLabel>
+          <Select labelId="horns" id="horn" multiple
+            value={personName} onChange={handleChange} input={<OutlinedInput label="Horns" />}
+            MenuProps={MenuProps}> { getMenusItems(horns, personName,theme) }
+          </Select>
+        </FormControl>
+
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.4}}>
+          <InputLabel id="tails">Tails</InputLabel>
+          <Select labelId="tails" id="tail" multiple
+            value={personName} onChange={handleChange} input={<OutlinedInput label="Tails" />}
+            MenuProps={MenuProps}> { getMenusItems(tails, personName,theme) }
+          </Select>
+        </FormControl>
+        </div>
     );            
 }
 
