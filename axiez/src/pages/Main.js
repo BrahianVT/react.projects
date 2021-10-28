@@ -20,8 +20,8 @@ function Main(){
                 <Hbar />
             </Grid>
             
-            <Grid item container spacing ={1} xs={12} sm={6} lg={9} xl={9} sx={{minHeight:700  }} >
-               <GridPagination />
+            <Grid item container spacing ={1} xs={12} sm={6} lg={9} xl={9} sx={{minHeight:700 }} >
+               <GridPagination/>
             </Grid>
         </Grid >
       </MyContext.Provider>  
