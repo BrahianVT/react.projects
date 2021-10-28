@@ -162,43 +162,51 @@ function Hbar(){
       if (isLoading) console.log('Loading...')*/
 
      React.useEffect(() =>{
-        const params = new URLSearchParams()
+        const params = new URLSearchParams(window.location.search)
         if(classes.size !== 0){
+           params.delete("classes");
            params.append("classes", queryClasses);                 
         } else {
            params.delete("classes");                    
         }
         if(valueHp > 27){
+           params.delete("hp");
            params.append("hp", valueHp);                    
         } else {
           params.delete("hp");                   
         }
         if(valueSpeed > 27){
+           params.delete("speed"); 
            params.append("speed", valueSpeed);                    
         } else {
           params.delete("speed");                   
         }
        if(valueSkill > 27){
+           params.delete("skill");
            params.append("skill", valueSkill);                    
         } else {
           params.delete("skill");                   
         } 
         if(valueMoral > 27){
+           params.delete("moral"); 
            params.append("moral", valueMoral);                    
         } else {
           params.delete("moral");                   
         }
         if(valueBreed < 7){
+           params.delete("breeds"); 
            params.append("breeds", valueBreed);                    
         } else {
           params.delete("breeds");                   
         }
         if(valueMystic > 0){
+           params.delete("mystics");  
            params.append("mystics", valueMystic);                    
         } else {
           params.delete("mystics");                   
         }
         if(valuePure > 1){
+           params.delete("pureness"); 
            params.append("pureness", valuePure);                    
         } else {
           params.delete("pureness");                   
@@ -214,7 +222,7 @@ function Hbar(){
        <List sx={{ paddingLeft:1, maxWidth: 320, bgcolor: 'background.paper' }}>
           <ListItemText primary={"Class"} />                 
          <ListItem key='tanks' disablePadding={true} >   
-                <Checkbox  sx={{ color: green[600], '&.Mui-checked': { color: green[600] },paddingRight: 0}} 
+                <Checkbox  sx={{ color: green[600], '&.Mui-checked': { color: green[600] },paddingRight: 0, paddingLeft: 0}} 
                   id='plant' checked={classes.has("Plant")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
@@ -231,7 +239,7 @@ function Hbar(){
               Aqua
           </ListItem>   
           <ListItem key='mids' disablePadding={true} >   
-                <Checkbox  sx={{ color: pink[200], '&.Mui-checked': { color: pink[200] },paddingRight: 0}} 
+                <Checkbox  sx={{ color: pink[200], '&.Mui-checked': { color: pink[200] },paddingRight: 0, paddingLeft: 0}} 
                   id='bird' checked={classes.has("Bird")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
@@ -249,7 +257,7 @@ function Hbar(){
               Dawn
           </ListItem>   
           <ListItem key='backs' disablePadding={true} >   
-                <Checkbox  sx={{ color: '#212121', '&.Mui-checked': { color: '#212121' },paddingRight: 0}} 
+                <Checkbox  sx={{ color: '#212121', '&.Mui-checked': { color: '#212121' },paddingRight: 0,paddingLeft: 0}} 
                   id='dusk' checked={classes.has("Dusk")} onChange={handleChange}
                   inputProps={{ 'aria-labelledby': "controlled" }}
                 />
@@ -271,7 +279,7 @@ function Hbar(){
           <Grid item xs sx={{ paddingRight:3}}>
              <Slider  name="1" sx={{ color: green[600]}} min = {27} max = {61} value={typeof valueHp === 'number' ? valueHp : 0}
             onChange={handleSliderChange} aria-labelledby="input-slider" />
-        </Grid>
+           </Grid>
            <Grid item>
              <Input value={valueHp} size="small" onChange={handleInputChange} onBlur={handleBlur} name="1"
               inputProps={{ step: 1, min: 27, max: 61, type: 'number', 'aria-labelledby': 'input-slider',}} />
@@ -343,13 +351,13 @@ function Hbar(){
            </ListItem>   
            
            <ListItemText primary={"Skills"} />
-           <ListItem  sx={{ padding:.4}}>
-           <Grid item >
+             <ListItem  sx={{ padding:.4}}>
+           <Grid item xs >
               <SelectSkills />
            </Grid>
            </ListItem>     
            <ListItem sx={{ padding:.4}}>
-           <Grid item>
+           <Grid item xs>
               <Stack spacing={2} direction="row">
                  <Button variant="contained" color="success" onClick= {parseQuery}>Search</Button>
                  <Button variant="contained" color="error" onClick={cleanf}>Clear</Button>
