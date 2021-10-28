@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select'; 
 import { backs,tails,horns, mouths} from '../Parts.js';
 import { green, red, orange, pink, purple ,blue } from '@mui/material/colors';
+import  { useHistory } from 'react-router-dom';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -62,25 +63,37 @@ const MenuProps = {
 function SelectSkills() {
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
-    
+    const [backs2, setBacks] = React.useState([]);
     
     const handleChange = (event) => {
       const {
         target: { value},
       } = event;
-      setPersonName(
+      setBacks(
         // On autofill we get a the stringified value.
         typeof value === 'string' ? value.split(',') : value,
       );
     };
-  
+
+
+    const history = useHistory()
+    React.useEffect(() =>{
+        const params = new URLSearchParams(window.location.search)
+        if(backs2.length != 0){ 
+            params.delete("parts")
+            params.append("parts", backs2)
+        }
+        else params.delete("parts")
+
+        history.push({search: params.toString()});
+    },[backs2]);
     return (
         <div>
         <FormControl  sx={{ minWidth: 200 , maxWidth: 237, marginBottom:0.4}}>
           <InputLabel id="backs">Backs</InputLabel>
           <Select labelId="backs" id="back" multiple
-            value={personName} onChange={handleChange} input={<OutlinedInput label="Backs" />}
-            MenuProps={MenuProps}> { getMenusItems(backs, personName,theme) }
+            value={backs2} onChange={handleChange} input={<OutlinedInput label="Backs" />}
+            MenuProps={MenuProps}> { getMenusItems(backs, backs2,theme) }
           </Select>
         </FormControl>
         
