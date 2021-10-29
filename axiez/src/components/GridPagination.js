@@ -228,7 +228,7 @@ const pageChange = (newPage) =>{
                     renderCell: (params) => (
                     <div onClick={() => { window.open('https://marketplace.axieinfinity.com/axie/' + params.value) }}> {params.value}</div>
                     ),
-                    Width: 100
+                    width: 80
                 },
                 {
                     field: "class",
@@ -241,7 +241,7 @@ const pageChange = (newPage) =>{
                         })()}
                      </div>
                     ),
-                    Width: 69,
+                    width: 80,
                     cellClassName: applyColor 
                        
                 },
@@ -251,47 +251,47 @@ const pageChange = (newPage) =>{
                     renderCell: (params) => (
                     <div> {params.value}</div>
                     ),
-                    width: 70
+                    width: 63
                 },
                 {
                     field: "attack",
-                    headerName: "attack",
+                    headerName: "atk",
                     renderCell: (params) => (
                     <div> {params.value}</div>
                     ),"type": "number",
-                    Width: 20
+                    width: 20
                 },
                 {
                     field: "defense",
-                    headerName: "defense",
+                    headerName: "def",
                     renderCell: (params) => (
                     <div> {params.value}</div>
                     ),"type": "number",
-                    Width: 20
+                    width: 20
                 },
                 {
                     field: "energy",
-                    headerName: "energy",
+                    headerName: "nrg",
                     renderCell: (params) => (
                     <div> {params.value}</div>
-                    ),
-                    Width: 20
+                    ),"type": "number",
+                    width: 10
                 },
                 {
                     field: "purity",
                     headerName: "purity",
                     renderCell: (params) => (
                     <div> {params.value}</div>
-                    ),
-                    Width: 20
+                    ),"type": "number",
+                    width: 63
                 },
                 {
                     field: "currentPriceUSD",
                     headerName: "USD",
                     renderCell: (params) => (
                     <div> {params.value}</div>
-                    ),
-                    Width: 40
+                    ),"type": "number",
+                    width: 60
                 },
                 {
                     field: "hp",
@@ -299,32 +299,32 @@ const pageChange = (newPage) =>{
                     renderCell: (params) => (
                         
                     <div> {params.value}</div>
-                    ),
-                    Width: 10
+                    ),"type": "number",
+                    width: 10
                 },
                 {
                     field: "speed",
                     headerName: "speed",
                     renderCell: (params) => (
                     <div > {params.value}</div>
-                    ),
-                    Width: 10
+                    ),"type": "number",
+                    width: 65
                 },
                 {
                     field: "skill",
                     headerName: "skill",
                     renderCell: (params) => (
                     <div > {params.value}</div>
-                    ),
-                    Width: 10
+                    ),"type": "number",
+                    width: 65
                 },
                 {
                     field: "morale",
                     headerName: "morale",
                     renderCell: (params) => (
                     <div> {params.value}</div>
-                    ),
-                    Width: 10
+                    ),"type": "number",
+                    width: 70
                 },
                 {
                     field: "back",
