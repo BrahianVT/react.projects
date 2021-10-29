@@ -28,31 +28,31 @@ const applyColor= (params) => {
     switch(aux){
         case "Plant":
                 return 'Plant';
-            break;
+            
             case "Beast":
                 return 'Beast';
-            break;
+            
             case "Aquatic":
                 return 'Aqua';
-            break;
+            
             case "Bird":
                 return 'Bird';
-            break;
+            
             case "Reptile":        
                 return 'Reptile';
-            break;
+            
             case "Dawn":   
                 return 'Dawn';
-            break;
+            
             case "Dusk":
                 return 'Dusk';
-            break;
+            
             case "Mech":
                 return 'Mech';
-            break;
+            
             case "Bug":
                 return 'Bug';
-            break;
+            
     }
 }
 const useStyles = makeStyles({
@@ -171,6 +171,7 @@ export default function GridPagination(){
         (async () => {
             from = 0; size = 100; total =[]; 
             //console.log("aqui"); setPage(0); setRows([]); setLoading(true);
+            console.log(criteria)
         do {
             let requestP = {from, size, sort, auctionType, criteria}
             
@@ -217,7 +218,7 @@ const pageChange = (newPage) =>{
 
 
   return (
-        <div style={{  width: '100%'}}  className={classes.root}>
+        <div style={{  width: '100%' }}  className={classes.root}>
             <DataGrid
             rows={rows}
             columns={[
