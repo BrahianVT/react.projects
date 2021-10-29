@@ -28,10 +28,10 @@ export const mouths =
 ]
 
 export const horns = 
-[ {name:'bambo-shoot',type:'plant'},{name:'beech',type:'plant'},{name:'rose-bud',type:'plant'},{name:'strawberry-shortcake',type:'plant'},{name:'cactus',type:'plant'},
+[ {name:'bamboo-shoot',type:'plant'},{name:'beech',type:'plant'},{name:'rose-bud',type:'plant'},{name:'strawberry-shortcake',type:'plant'},{name:'cactus',type:'plant'},{name:'watermelon',type:'plant'},
   {name:'babylonia',type:'aquatic'},{name:'teal-shell',type:'aquatic'},{name:'clamshell',type:'aquatic'},{name:'anemone',type:'aquatic'},{name:'oranda',type:'aquatic'},
   {name:'little-branch',type:'beast'},{name:'imp',type:'beast'},{name:'merry',type:'beast'},{name:'pocky',type:'beast'},{name:'dual-blade',type:'beast'},{name:'arco',type:'beast'},
-  {name:'eggshell',type:'bird'},{'cuckoo':'bird'},{'trump':'bird'},{'kestrel':'bird'},{'wing-horn':'bird'},{'feather-spear':'bird'},
+  {name:'eggshell',type:'bird'},{name:'cuckoo',type:'bird'},{name:'trump',type:'bird'},{name:'kestrel',type:'bird'},{name:'wing-horn',type:'bird'},{name:'feather-spear',type:'bird'},
   {name:'laggin',type:'bug'},{name:'antenna',type:'bug'},{name:'caterpillars',type:'bug'},{name:'pliers',type:'bug'},{name:'parasite',type:'bug'},
   {name:'unko',type:'reptile'},{name:'scaly-spear',type:'reptile'},{name:'cerastes',type:'reptile'},{name:'scaly-spoon',type:'reptile'},{name:'bumpy',type:'reptile'}  
 ]
