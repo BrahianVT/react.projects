@@ -118,6 +118,7 @@ function Hbar(){
              setValueBreed(7)
              setValueMystic(0)
              setValuePure(1)
+             history.push({ search: ''});
       }
      
       let  criteria2 = {
@@ -152,6 +153,8 @@ function Hbar(){
               criteria2.numMystic = [0, Number(parameters.get('mystics'))]
            if(parameters.has('pureness'))
               criteria2.pureness =  [Number(parameters.get('pureness'))]
+           if(parameters.has('parts'))
+           criteria2.parts = parameters.get('parts').split(",") 
       
          addData(criteria2)
       }
