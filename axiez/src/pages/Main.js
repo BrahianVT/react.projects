@@ -20,7 +20,7 @@ function Main(){
                 <Hbar />
             </Grid>
             
-            <Grid item container spacing ={1} xs={12} sm={6} lg={9} xl={9} sx={{minHeight:500 }} >
+            <Grid item container spacing ={1} xs={12} sm={6} lg={9} xl={9} sx={{maxHeight:750 }} >
                <GridPagination/>
             </Grid>
         </Grid >

@@ -74,7 +74,7 @@ function SelectSkills() {
     const history = useHistory()
     React.useEffect(() =>{
         const params = new URLSearchParams(window.location.search)
-        if(parts.length != 0){ 
+        if(parts.length !== 0){ 
             params.delete("parts")
             params.append("parts", parts)
         }
