@@ -12,6 +12,9 @@ const Input =  styled(MuiInput)`
 `;
 
 
+function sleep(ms) {
+   return new Promise(resolve => setTimeout(resolve, ms));
+ }
 function Hbar(){
     const [classes, setClasses] = React.useState(new Set())
     const [queryClasses, setQueryClasses] = React.useState("")        
@@ -162,15 +165,31 @@ function Hbar(){
      /* const {data, error, isLoading, isSuccess} = GetAxiesInfo({from, size, sort, auctionType, criteria2})
       if (error) console.log('Something went wrong')
       else console.log(data);
-      if (isLoading) console.log('Loading...')*/
+      if (isLoading) console.log('Loading...')
+      */
+     React.useEffect(() =>{
+        const parameters  = new URLSearchParams(window.location.search)
+        if(parameters.has('classes')){
+            const c = parameters.get('classes').split(',');
+            c.forEach(value => classes.add(value))
+        }
+
+        if(parameters.has('hp'))setValueHp(Number(parameters.get('hp')))
+        if(parameters.has('speed'))setValueSpeed(Number(parameters.get('speed')))
+        if(parameters.has('skill'))setValueSkill(Number(parameters.get('skill')))
+        if(parameters.has('moral'))setValueMoral(Number(parameters.get('moral')))
+        if(parameters.has('breeds'))setValueBreed(Number(parameters.get('breeds')))
+        if(parameters.has('mystics'))setValueMystic(Number(parameters.get('mystics')))  
+        
+     },[]); 
 
      React.useEffect(() =>{
         const params = new URLSearchParams(window.location.search)
-        if(classes.size !== 0){
+        if(queryClasses){
            params.delete("classes");
            params.append("classes", queryClasses);                 
         } else {
-           params.delete("classes");                    
+           if(classes.size == 0)params.delete("classes");                    
         }
         if(valueHp > 27){
            params.delete("hp");
@@ -217,7 +236,7 @@ function Hbar(){
         
         history.push({ search: params.toString()});
 
-     }, [classes, history, queryClasses, valueHp, valueSpeed, valueSkill, valueMoral, valueMystic, valueBreed, valuePure])
+     }, [history, queryClasses, valueHp, valueSpeed, valueSkill, valueMoral, valueMystic, valueBreed, valuePure])
 
      
         

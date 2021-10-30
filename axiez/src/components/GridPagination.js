@@ -153,7 +153,7 @@ function parsing(response){
     console.log(total.length);
 }
 
-function sleep(ms) {
+ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   
@@ -170,7 +170,7 @@ export default function GridPagination(){
         setPage(0);
         (async () => {
             from = 0; size = 100; total =[]; 
-            //console.log("aqui"); setPage(0); setRows([]); setLoading(true);
+            setPage(0); setRows([]); setLoading(true);
             console.log(criteria)
         do {
             let requestP = {from, size, sort, auctionType, criteria}
