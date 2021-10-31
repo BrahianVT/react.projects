@@ -63,52 +63,61 @@ const MenuProps = {
 function SelectSkills() {
     const theme = useTheme();
     const [parts, setParts] = React.useState([]);
-    
+    const [ query, setQuery] = React.useState('');
     const handleChange = (event) => {
       const {
         target: { value},
       } = event;
       setParts(value);
+      setQuery(value.toString());
     };
 
     const history = useHistory()
+    React.useEffect(() => {
+      const params = new URLSearchParams(window.location.search)
+      if(params.has("parts")){
+        params.get("parts").split(',').forEach( x  => parts.push(x))
+      }
+    },[])
     React.useEffect(() =>{
         const params = new URLSearchParams(window.location.search)
-        if(parts.length !== 0){ 
+        if(query){ 
             params.delete("parts")
             params.append("parts", parts)
         }
-        else params.delete("parts")
+        else { console.log(parts)
+          if(parts.length === 0)params.delete("parts")
+        }
         history.push({search: params.toString()});
     },[parts]);
     return (
         <div>
-        <FormControl  sx={{ minWidth: 200 , maxWidth: 237, marginBottom:0.4}}>
-          <InputLabel id="backs">Backs</InputLabel>
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237, marginBottom:0.5}}>
+          <InputLabel id="backs" shrink={true} >Backs</InputLabel>
           <Select labelId="backs" id="back" multiple name= 'back'
             value={parts} onChange={handleChange} input={<OutlinedInput label="Backs" />}
             MenuProps={MenuProps}> { getMenusItems(backs, parts,theme,'back') }
           </Select>
         </FormControl>
         
-        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.4}}>
-          <InputLabel id="mouths">Mouths</InputLabel>
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.5}}>
+          <InputLabel id="mouths"  shrink={true}>Mouths</InputLabel>
           <Select labelId="mouths" id="mouth" multiple
             value={parts} onChange={handleChange} input={<OutlinedInput label="Mouths" />}
             MenuProps={MenuProps}> { getMenusItems(mouths, parts,theme,'mouth') }
           </Select>
         </FormControl>
 
-        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.4}}>
-          <InputLabel id="horns">Horns</InputLabel>
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.5}}>
+          <InputLabel id="horns"  shrink={true}>Horns</InputLabel>
           <Select labelId="horns" id="horn" multiple
             value={parts} onChange={handleChange} input={<OutlinedInput label="Horns" />}
             MenuProps={MenuProps}> { getMenusItems(horns, parts,theme,'horn') }
           </Select>
         </FormControl>
 
-        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.4}}>
-          <InputLabel id="tails">Tails</InputLabel>
+        <FormControl  sx={{ minWidth: 200 , maxWidth: 237 , marginBottom:0.5}}>
+          <InputLabel id="tails"  shrink={true}>Tails</InputLabel>
           <Select labelId="tails" id="tail" multiple
             value={parts} onChange={handleChange} input={<OutlinedInput label="Tails" />}
             MenuProps={MenuProps}> { getMenusItems(tails, parts,theme,'tail') }
