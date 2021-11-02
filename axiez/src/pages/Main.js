@@ -9,8 +9,11 @@ function Main(){
     const [criteria, setCriteria] = React.useState({})
     const addData = (newData) =>  setCriteria(newData)
     
+    const [cleanSelects, setCleanSelects] = React.useState(false)
+    const changeClean = (change) => setCleanSelects(change)
+
     return (
-      <MyContext.Provider value={{criteria, addData}}>
+      <MyContext.Provider value={{criteria, addData , cleanSelects, changeClean}}>
          <Grid container spacing={3} sx={{ flexGrow:1 }}>
             <Grid item xs={12} sx={{ padding: 1 }}>
                 <NavBar  />

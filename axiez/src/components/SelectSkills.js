@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import { backs,tails,horns, mouths} from '../Parts.js';
 import { green, red, orange, pink, purple ,blue } from '@mui/material/colors';
 import  { useHistory } from 'react-router-dom';
+import MyContext from "../MyContext.js"; 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -64,6 +65,10 @@ function SelectSkills() {
     const theme = useTheme();
     const [parts, setParts] = React.useState([]);
     const [ query, setQuery] = React.useState('');
+
+    const { cleanSelects } = React.useContext(MyContext)
+   
+
     const handleChange = (event) => {
       const {
         target: { value},
@@ -71,6 +76,15 @@ function SelectSkills() {
       setParts(value);
       setQuery(value.toString());
     };
+
+    
+  
+    
+    React.useEffect(() => {
+        console.log("Aqui")
+      setParts([]);
+    },[cleanSelects])
+  
 
     const history = useHistory()
     React.useEffect(() => {
@@ -89,7 +103,7 @@ function SelectSkills() {
           if(parts.length === 0)params.delete("parts")
         }
         history.push({search: params.toString()});
-    },[parts]);
+    },[query]);
     return (
         <div>
         <FormControl  sx={{ minWidth: 200 , maxWidth: 237, marginBottom:0.5}}>

@@ -12,9 +12,7 @@ const Input =  styled(MuiInput)`
 `;
 
 
-function sleep(ms) {
-   return new Promise(resolve => setTimeout(resolve, ms));
- }
+
 function Hbar(){
     const [classes, setClasses] = React.useState(new Set())
     const [queryClasses, setQueryClasses] = React.useState("")        
@@ -26,8 +24,7 @@ function Hbar(){
     const [valueMystic, setValueMystic] = React.useState(0)
     const [valuePure, setValuePure] = React.useState(1)     
     
-    const {  addData} = React.useContext(MyContext)
-
+    const {  addData, changeClean} = React.useContext(MyContext)
     const history = useHistory()
     const handleSliderChange = (event, newValue) => {
           if(event.target.name === '1')setValueHp(newValue);
@@ -37,6 +34,7 @@ function Hbar(){
           if(event.target.name === '5')setValueBreed(newValue);
           if(event.target.name === '6')setValueMystic(newValue);
           if(event.target.name === '7')setValuePure(newValue);
+
     };
 
     const handleInputChange = (event) => {
@@ -121,6 +119,7 @@ function Hbar(){
              setValueBreed(7)
              setValueMystic(0)
              setValuePure(1)
+             changeClean(true)
              history.push({ search: ''});
       }
      
