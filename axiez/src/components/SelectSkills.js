@@ -66,7 +66,7 @@ function SelectSkills() {
     const [parts, setParts] = React.useState([]);
     const [ query, setQuery] = React.useState('');
 
-    const { cleanSelects } = React.useContext(MyContext)
+    const { cleanSelects, changeClean } = React.useContext(MyContext)
    
 
     const handleChange = (event) => {
@@ -83,6 +83,7 @@ function SelectSkills() {
     React.useEffect(() => {
         console.log("Aqui")
       setParts([]);
+      changeClean(false)
     },[cleanSelects])
   
 
