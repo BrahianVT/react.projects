@@ -373,9 +373,9 @@ function Hbar(){
            
            <ListItemText primary={"Skills"} />
              <ListItem  sx={{ padding:.4}}>
-           <Grid item xs >
+            <Grid item xs >
               <SelectSkills />
-           </Grid>
+            </Grid>
            </ListItem>     
            <ListItem sx={{ padding:.4}}>
            <Grid item xs>

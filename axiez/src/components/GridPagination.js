@@ -10,7 +10,7 @@ const getBack = (params) =>{ return params.row.parts[2].name }
 
 const getMouth = (params) =>{ return params.row.parts[3].name }
 const getHorn = (params) =>{ return params.row.parts[4].name }
-
+const getTail = (params) =>{ return params.row.parts[5].name }
 const applyColor= (params) => {
     var aux = '';
     if(params.field === 'class')
@@ -21,9 +21,9 @@ const applyColor= (params) => {
         aux = params.row.parts[3].class
     else if (params.field === 'horn')
         aux = params.row.parts[4].class
-    else if (params.field === 'parts')
+    else if (params.field === 'tail')
         aux = params.row.parts[5].class
-
+        
     //console.log(params.field)
     switch(aux){
         case "Plant":
@@ -334,7 +334,7 @@ const pageChange = (newPage) =>{
                     <div>{(() => {
                     })()} {params.value}</div>
                     ),
-                    Width: 30, cellClassName: applyColor , valueGetter: getBack 
+                    cellClassName: applyColor , valueGetter: getBack 
                 },
                 {
                     field: "mouth",
@@ -342,7 +342,7 @@ const pageChange = (newPage) =>{
                     renderCell: (params) => (
                     <div > {params.value}</div>
                     ),
-                    Width: 30,cellClassName: applyColor ,valueGetter: getMouth
+                    cellClassName: applyColor ,valueGetter: getMouth
                 },
                 {
                     field: "horn",
@@ -350,15 +350,15 @@ const pageChange = (newPage) =>{
                     renderCell: (params) => (
                     <div > {params.value}</div>
                     ),
-                    Width: 30,cellClassName: applyColor,valueGetter: getHorn
+                   cellClassName: applyColor,valueGetter: getHorn
                 },
                 {
-                    field: "parts",
+                    field: "tail",
                     headerName: "tail",
                     renderCell: (params) => (
-                    <div > {params.value[5].name}</div>
+                    <div > {params.value}</div>
                     ),
-                    Width: 30,cellClassName: applyColor
+                    cellClassName: applyColor, valueGetter: getTail
                 }
                 ]}
             pagination
