@@ -8,15 +8,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { About } from "./About";
 
 
-function grid() { 
-        return(        
-        <><Grid item xs={12} sm={6} md={5} lg={2} xl={2}>
+function grid() {
+    return (
+        <>
+        <Grid item xs={12} sm={6} md={5} lg={2} xl={2}>
             <Hbar />
         </Grid>
-        <Grid item container spacing ={1} xs={12} sm={6} lg={9} xl={9} sx={{maxHeight:750 }} >
-            <GridPagination/>
-        </Grid></>);
-    }
+            <Grid item container spacing={1} xs={12} sm={6} lg={9} xl={9} sx={{ minHeight: 500,maxHeight: 750 }} >
+                <GridPagination />
+            </Grid></>);
+}
 
 function Main() {
     const [criteria, setCriteria] = React.useState({})
@@ -27,17 +28,19 @@ function Main() {
 
     return (
         <MyContext.Provider value={{ criteria, addData, cleanSelects, changeClean }}>
-             <Router><Grid container spacing={3} sx={{ flexGrow: 1 }}>
-                <Grid item xs={12} sx={{ padding: 1 }}>
-                    <NavBar />
-                </Grid>
-               
+            <Router>
+                <Grid container spacing={3} sx={{ flexGrow: 1 }}>
+                    <Grid item xs={12} sx={{ padding: 1 }}>
+                        <NavBar />
+                    </Grid>
+
                     <Switch>
-                        <Route exact path="/" component={grid}/>
-                        <Route exact path="/about" component={About} />    
+                        <Route exact path="/" component={grid} />
+                        <Route exact path="/about" component={About} />
                     </Switch>
-               
-            </Grid >   </Router>
+
+                </Grid >
+            </Router>
         </MyContext.Provider>
     );
 }

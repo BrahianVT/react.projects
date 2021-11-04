@@ -193,17 +193,14 @@ export default function GridPagination(){
     .then(data => setLoading(false))
 */
 
-const pageChange = (newPage) =>{ 
-    console.log(newPage)
-    setPage(newPage)
-}
+const pageChange = (newPage) =>{  console.log(newPage); setPage(newPage) }
 
     React.useEffect( () => {
        
         let active = true;   
         (async () => {
             setLoading(true);
-            await sleep(2500);
+            await sleep(2800);
             const newRows = await loadServerRows(page,total);
             //console.log("from :" + from + " ," + " totalsize:  "+ totalsize + " size:" +  total.length);
             if(!active) return;

@@ -81,7 +81,6 @@ function SelectSkills() {
   
     
     React.useEffect(() => {
-        console.log("Aqui")
       setParts([]);
       changeClean(false)
     },[cleanSelects])
